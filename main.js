@@ -34,12 +34,26 @@ var dodger = {
      */
     update: function () {
 
+        // Vélocité de base
+        this.player.body.velocity.x = 0;
+        this.player.body.velocity.y = 0;
+
         // Déplacement joueur
         if (this.cursors.left.isDown) this.player.body.velocity.x = -300;
         if (this.cursors.right.isDown) this.player.body.velocity.x = 300;
         if (this.cursors.up.isDown) this.player.body.velocity.y = -300;
         if (this.cursors.down.isDown) this.player.body.velocity.y = 300;
 
+        // Vérifie si le joueur ne sort pas de la carte
+        if (this.player.inWorld == false) this.restartGame();
+
+    },
+
+    /**
+     * Recommence le jeu
+     */
+    restartGame: function () {
+        game.state.start('dodger');
     }
 
 };
