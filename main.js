@@ -17,8 +17,6 @@ var dodger = {
      */
     create: function () {
 
-        this.loopMechant = 1000;
-
         //physique du jeu
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -33,7 +31,7 @@ var dodger = {
 
         // Ajout du groupe de méchand
         this.mechants = game.add.group();
-        this.timer = game.time.events.loop(this.loopMechant, this.ctrlMechant, this);
+        this.timer = game.time.events.loop(500, this.ctrlMechant, this);
 
         // Défini le score
         this.score = 0;
@@ -95,9 +93,7 @@ var dodger = {
         this.score += 10;
         this.labelScore.text = this.score;
 
-    },
-
-
+    }
 
 };
 
